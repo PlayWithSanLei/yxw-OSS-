@@ -36,6 +36,9 @@ export default {
         console.log(base64)
         window.sessionStorage.setItem('filename', files.name)
         window.sessionStorage.setItem('base64',base64)
+        window.sessionStorage.setItem('hash',hash)
+        console.log(hash)
+        console.log(base64)
         that.file = files
         that.filename = files.name
         that.base64 = base64
