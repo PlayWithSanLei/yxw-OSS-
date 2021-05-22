@@ -43,9 +43,9 @@ export default {
       }
     },
     put() {
-      const name = this.filename
+      const name = 'oss/objects/' + this.filename
       console.log(this.Digest)
-      this.$http.put('oss/objects/image-20210401214330182.png')
+      this.$http.put(name)
     }
   }
 }
