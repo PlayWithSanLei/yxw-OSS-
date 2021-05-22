@@ -9,8 +9,8 @@ import { sha256 } from 'js-sha256'
 import { Base64 } from 'js-base64'
 import axios from "axios"
 
-// axios.defaults.baseURL = 'http://192.168.43.159:9426/api/v2/'
-axios.defaults.baseURL = 'http://127.0.0.1:9426/api/v2/'
+axios.defaults.baseURL = 'http://192.168.43.159:9426/api/v2/'
+// axios.defaults.baseURL = 'http://127.0.0.1:9426/api/v2/'
 axios.interceptors.request.use(config => {
   config.headers.Digest = 'SHA-256=' + window.sessionStorage.getItem('base64')
   return config

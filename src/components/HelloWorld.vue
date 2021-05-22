@@ -27,18 +27,17 @@ export default {
     inputChange(e) {
       var that = this
       let files = e.target.files[0]
+
+      // console.log(param)
       let fileReads = new FileReader()
       fileReads.readAsArrayBuffer(files)
       fileReads.onload = function () {
         var wordArray = CryptoJs.lib.WordArray.create(fileReads.result)
         var hash = CryptoJs.SHA256(wordArray).toString()
         var base64 = Base64.encode(hash)
-        console.log(base64)
         window.sessionStorage.setItem('filename', files.name)
         window.sessionStorage.setItem('base64',base64)
         window.sessionStorage.setItem('hash',hash)
-        console.log(hash)
-        console.log(base64)
         that.file = files
         that.filename = files.name
         that.base64 = base64
@@ -46,9 +45,8 @@ export default {
       }
     },
     put() {
-      const name = 'oss/objects/' + this.filename
-      console.log(this.Digest)
-      this.$http.put(name)
+      const name = 'oss/objects/'+this.filename
+      this.$http.put(name,this.file)
     }
   }
 }
